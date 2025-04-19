@@ -1,0 +1,29 @@
+{
+  "name": "vibex-cli",
+  "version": "0.1.0",
+  "description": "VibEx CLI for preparing code for AI analysis",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "vx": "./bin/vx.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.27.0",
+    "@babel/traverse": "^7.27.0",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.2",
+    "commander": "^8.3.0",
+    "css": "^3.0.0",
+    "dotenv": "^16.5.0",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.2.0",
+    "glob-promise": "^6.0.7",
+    "node-html-parser": "^7.0.1",
+    "parse-gitignore": "^2.0.0",
+    "python-ast": "^0.1.0",
+    "swift-parser": "^0.1.2"
+  }
+}
