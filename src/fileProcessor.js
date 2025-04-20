@@ -11,10 +11,11 @@ async function processFiles(options) {
   const defaultExcludes = ['node_modules/**'];
   
   if (options.files) {
-    filesToProcess = options.files.filter(file => !file.startsWith('vx_'));
+      filesToProcess = options.files.filter(file => !path.basename(file).startsWith('vx'));
   } else {
-    const excludePatterns = options.force ? options.exclude || [] : [...defaultExcludes, ...(options.exclude || [])];
-    filesToProcess = glob.sync('**/*.{js,py,html,css,txt}', { ignore: excludePatterns }).filter(file => !file.startsWith('vx_'));
+      const excludePatterns = options.force ? options.exclude || [] : [...defaultExcludes, ...(options.exclude || [])];
+      filesToProcess = glob.sync('**/*.{js,py,html,css,txt}', { ignore: excludePatterns })
+                        .filter(file => !path.basename(file).startsWith('vx'));
   }
 
   // Extract character range options
