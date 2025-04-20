@@ -49,6 +49,9 @@ vx c --rc --rp
 
 # Monitor files for changes
 vx c -mx
+
+# Remove comments from inside single folders files
+vx rcm
 ```
 
 ### Output
@@ -213,6 +216,61 @@ vx c -f src/ -mx
 ```
 
 When any monitored file changes, VibEx automatically updates the combined output file.
+
+# New Function Remove Comments Inside Files (vx remove-comments / vx rcm)
+
+⚠️ **WARNING**: This command modifies your files directly **IN PLACE**!
+There is no undo feature. It is strongly recommended to commit your code to version control (like Git) or create a backup before running this command.
+
+## Overview
+
+This command allows you to remove comments from your source code files based on language-specific comment syntax (e.g., `//`, `/* */`, `#`, `<!-- -->`). It processes files found in the current directory and subdirectories by default, or specific files/patterns you provide, overwriting the original files with the comment-free version.
+
+## Syntax
+
+```bash
+vx remove-comments [options] [-f <files...>] [-x <patterns...>]
+# Alias:
+vx rcm [options] [-f <files...>] [-x <patterns...>]
+```
+
+## Common Options
+
+- `-f, --files <files...>`: Specify the target files or glob patterns (e.g., "src/**/*.js", main.py). If omitted, it scans the current directory for supported file types (respecting excludes).
+
+- `-x, --exclude <patterns...>`: Specify glob patterns for files or directories to exclude (e.g., "**/tests/**", vendor/**). By default, node_modules/** and vx_*.txt are excluded.
+
+- `--force`: Include files in normally excluded directories (like node_modules). Use carefully.
+
+## Examples
+
+1. Remove comments from all supported files in the project (run from project root):
+   ```bash
+   vx rcm
+   ```
+
+2. Remove comments from a specific file:
+   ```bash
+   vx rcm -f src/utils.py
+   ```
+
+3. Remove comments from all JavaScript files in the src directory:
+   ```bash
+   # Make sure to quote the glob pattern
+   vx rcm -f "src/**/*.js"
+   ```
+
+4. Remove comments from all supported files, but skip the build folder and all test files:
+   ```bash
+   vx rcm -x "build/**" -x "**/*test*.py" -x "**/*.spec.js"
+   ```
+
+## Getting Help
+
+For detailed options and information specific to this command:
+```bash
+vx rcm --help
+```
 
 ## 🤝 Contributing
 

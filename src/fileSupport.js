@@ -1,5 +1,9 @@
 // src/fileSupport.js
-
+import path from 'path'; // <-- Import path module at the top
+import fs from 'fs-extra'; 
+import chalk from 'chalk';
+// Inside the isBinaryFile function's try block
+// Inside the isBinaryFile function's try block// <-- WRONG
 /**
  * File type support information and utilities
  */
@@ -123,29 +127,53 @@ const fileTypeSupport = {
     return 'other';
   }
   
-  /**
-   * Checks if a file is binary (not text)
-   * @param {string} filePath - Path to the file
-   * @returns {Promise<boolean>} - Whether the file is binary
-   */
-  async function isBinaryFile(filePath) {
-    try {
-      const { default: isBinary } = await import('is-binary-file');
-      return await isBinary(filePath);
-    } catch (error) {
-      // Fallback to extension-based check if module not available
+ 
+
+async function isBinaryFile(filePath) {
+  try {
+      // Ensure the file exists and is a file before checking
+      if (!(await fs.pathExists(filePath)) || !(await fs.stat(filePath)).isFile()) {
+          return true; // Treat non-existent or non-files as non-processable
+      }
+
+      // Import the named export 'isBinaryFile' from 'isbinaryfile'
+      const { isBinaryFile: checkIsBinary } = await import('isbinaryfile');
+
+      // Check if the imported function is actually a function
+      if (typeof checkIsBinary !== 'function') {
+           throw new Error('"isbinaryfile" did not export a function named "isBinaryFile"');
+      }
+
+      // Call the function - it usually takes the file path and returns a Promise<boolean>
+      return await checkIsBinary(filePath);
+
+  } catch (error) {
+      // Use the correct package name in warnings
+      if (error.code === 'ERR_MODULE_NOT_FOUND' && error.message.includes('isbinaryfile')) {
+           console.warn(chalk.yellow(`Warning: Optional package 'isbinaryfile' not found. Falling back to extension check for ${filePath}. Run 'npm install isbinaryfile' for better accuracy.`));
+      } else {
+           console.warn(chalk.yellow(`Warning: 'isbinaryfile' check failed for ${filePath}. Falling back to extension check. Error: ${error.message}`));
+      }
+
+      // Fallback to extension-based check
       const binaryExtensions = [
-        '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico', '.tif', '.tiff',
-        '.pdf', '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx',
-        '.zip', '.tar', '.gz', '.7z', '.rar', '.exe', '.dll', '.so',
-        '.mp3', '.mp4', '.avi', '.mov', '.wav', '.ogg', '.flac',
-        '.ttf', '.otf', '.woff', '.woff2'
+          '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico', '.tif', '.tiff',
+          '.pdf',
+          '.doc', '.docx', '.ppt', '.pptx', '.xls', '.xlsx',
+          '.zip', '.tar', '.gz', '.7z', '.rar',
+          '.exe', '.dll', '.so', '.dylib', '.app',
+          '.mp3', '.mp4', '.avi', '.mov', '.wav', '.ogg', '.flac', '.webm',
+          '.ttf', '.otf', '.woff', '.woff2',
+          '.iso', '.img', '.dmg',
+          '.pyc', '.pyo',
+          '.class', '.jar',
+          '.swf'
       ];
-      
-      const extension = require('path').extname(filePath).toLowerCase();
+      const extension = path.extname(filePath).toLowerCase();
       return binaryExtensions.includes(extension);
-    }
   }
+}
+
   
   /**
    * Gets language-specific parser options for a file

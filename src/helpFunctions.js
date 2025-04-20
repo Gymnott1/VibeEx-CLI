@@ -10,6 +10,10 @@ function showCommandHelp(command) {
     case 'c':
       showCombineHelp();
       break;
+    case 'remove-comments': // Add case for new command
+    case 'rcm':             // Add case for alias
+        showRemoveCommentsHelp();
+        break;
     case 'trim':
       showTrimHelp();
       break;
@@ -118,6 +122,45 @@ function showTrimHelp() {
   console.log('  - To find character positions, you can use text editors with position display\n');
 }
 
+function showRemoveCommentsHelp() {
+  console.log(chalk.bold.green('\nVibEx CLI: Remove Comments Command') + '\n');
+  console.log(chalk.bold('DESCRIPTION'));
+  console.log(' This command finds supported source code files and removes comments from them.');
+  console.log(chalk.red(' It modifies the files directly in place. Use with caution!\n'));
+
+  console.log(chalk.bold('USAGE'));
+  console.log(' vx remove-comments [options]');
+  console.log(' vx rcm [options]\n');
+
+  console.log(chalk.bold('OPTIONS'));
+  console.log(' ' + chalk.yellow('-f, --files <files...> ') + 'Specify specific files or glob patterns to process.');
+  console.log('                         Example: `vx rcm -f src/app.js src/utils/*.ts`');
+  console.log('                         If omitted, it searches for all supported file types in the');
+  console.log('                         current directory and subdirectories (respecting exclusions).\n');
+
+  console.log(' ' + chalk.yellow('-x, --exclude <ptns...> ') + 'Specify files or glob patterns to exclude from processing.');
+  console.log('                         Defaults exclude `node_modules/**` and `vx_*.txt`.');
+  console.log('                         Example: `vx rcm -x "**/__tests__/**" "**/dist/**"`\n');
+
+  console.log(' ' + chalk.yellow('--force             ') + 'Force processing in normally excluded directories like `node_modules`.');
+  console.log('                         Example: `vx rcm --force` (generally not recommended).\n');
+
+  console.log(chalk.bold('EXAMPLES'));
+  console.log(' # Remove comments from a specific Python file');
+  console.log(' vx rcm -f my_app.py\n');
+
+  console.log(' # Remove comments from all supported files (js, py, css, etc.) in the current project');
+  console.log(' vx rcm\n');
+
+  console.log(' # Remove comments from all .ts files inside the src directory');
+  console.log(' vx rcm -f "src/**/*.ts"\n');
+
+  console.log(' # Remove comments from all supported files, but skip the vendor directory');
+  console.log(' vx rcm -x "vendor/**"\n');
+
+  console.log(chalk.bold.red('IMPORTANT: This operation modifies your files directly.'));
+  console.log(chalk.red('Ensure you have committed your changes to version control or have backups before running.\n'));
+}
 /**
  * Show detailed help for character cutting
  */
@@ -162,4 +205,4 @@ function showCutHelp() {
   console.log('  - To find character positions, you can use text editors with position display\n');
 }
 
-export { showCommandHelp, showCombineHelp, showTrimHelp, showCutHelp };
+export { showCommandHelp, showCombineHelp, showTrimHelp, showCutHelp, showRemoveCommentsHelp };
