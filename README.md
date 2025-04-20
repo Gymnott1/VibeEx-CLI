@@ -5,7 +5,7 @@
 
 VibEx (`vx`) is a developer-friendly CLI tool that streamlines the process of working with AI coding assistants. It helps developers prepare, consolidate, and clean code for AI analysis without exposing sensitive information.
 
-![vibex-cli](images\vibex-cli.jpg)
+![vibex-cli](https://i.ibb.co/x8cPMSqK/Whats-App-Image-2025-04-20-at-17-38-16-86b3019f.jpg)
 
 ## 🚀 Features
 
