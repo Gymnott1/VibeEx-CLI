@@ -7,6 +7,10 @@ VibEx (`vx`) is a developer-friendly CLI tool that streamlines the process of wo
 
 ![vibex-cli](images/vibex-cli.jpg)
 
+![vibex-cli](images/ex1.png)
+
+![vibex-cli](images/ex2.png)
+
 ## 🚀 Features
 
 - **Combine multiple files** into a single document for AI analysis
