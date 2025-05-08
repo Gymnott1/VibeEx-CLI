@@ -5,6 +5,24 @@
 
 VibEx (`vx`) is a developer-friendly CLI tool that streamlines the process of working with AI coding assistants. It helps developers prepare, consolidate, and clean code for AI analysis without exposing sensitive information.
 
+
+Imagine needing to share your code with an AI assistant—only to discover that your context window is clogged with hundreds of lines of comments, private API keys, email addresses, phone numbers, personal tokens, secret codes, and more. Worse yet, you have entire code blocks you’d prefer to keep hidden from prying eyes. These headaches are exactly why you need **Vibex-CLI**.
+
+**Vibex-CLI** is the open-source command-line tool designed to:
+
+* **Strip Out Noise & Secrets**
+  Automatically remove comments and any file or folder matching sensitive patterns (e.g., `.git/`, `node_modules/`, and your own custom “secret” paths).
+* **Consolidate Your Context**
+  Gather all of your code’s relevant files into a single, clean text file—named `vx_{your_project_name}.txt`—so you can feed one streamlined document into any AI assistant.
+* **Customize to Your Workflow**
+  Configure exactly which files, folders, or patterns to include or exclude. Use it across projects of any size and structure.
+* **Keep Private Data Private**
+  Built-in filters safeguard your API keys, tokens, and other secrets, so you never accidentally expose them when collaborating or querying an AI model.
+
+With **Vibex-CLI**, you eliminate the friction of context-window limits and secret-leak anxiety. Just run a single command, point it to your project directory, and voilà—you have one neat, secure text file ready for AI-powered code review, refactoring, or generation. Secure, flexible, and totally under your control—Vibex-CLI is your all-in-one solution for code sharing with confidence.
+
+Lets make AI coding easy and secure !!!!! 💥💥⭐🥳
+
 ![vibex-cli](images/vibex-cli.jpg)
 
 ![vibex-cli](images/ex1.png)
@@ -276,6 +294,16 @@ For detailed options and information specific to this command:
 vx rcm --help
 ```
 
+
+## 🔄 Advanced Features
+
+- **Character Range Trimming**: Include only specific parts of your code
+- **Character Range Cutting**: Exclude specific parts of your code
+- **Comment Removal**: For multiple programming languages
+- **File Monitoring**: Auto-update when source files change
+- **Remove Comments In-Place**: New `rcm` command to clean files directly
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Check out our [Contributing Guide](CONTRIBUTING.md) for details on:
@@ -303,6 +331,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Inspired by the challenges developers face when working with AI coding assistants
 - Built with open-source tools and community support
+
+
+
+
+*Tags: code security, AI coding assistant, sensitive data protection, secure coding, developer tools, data privacy, API key protection, code sanitization, AI prompt engineering, context window optimization, credential protection, secure development, code sharing tools, PII protection, developer security, AI code assistance, secure AI integration, code privacy, token optimization, CLI tools, developer productivity*
+
 
 ---
 
