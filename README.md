@@ -8,7 +8,7 @@ VibEx (`vx`) is a developer-friendly CLI tool that streamlines the process of wo
 
 Imagine needing to share your code with an AI assistant—only to discover that your context window is clogged with hundreds of lines of comments, private API keys, email addresses, phone numbers, personal tokens, secret codes, and more. Worse yet, you have entire code blocks you’d prefer to keep hidden from prying eyes. These headaches are exactly why you need **Vibex-CLI**.
 
-**Vibex-CLI** is the open-source command-line tool designed to:
+**Vibex-CLI** is designed to:
 
 * **Strip Out Noise & Secrets**
   Automatically remove comments and any file or folder matching sensitive patterns (e.g., `.git/`, `node_modules/`, and your own custom “secret” paths).
