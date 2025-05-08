@@ -331,6 +331,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Inspired by the challenges developers face when working with AI coding assistants
 - Built with open-source tools and community support
+- Developed by Linus Wabwire alias gymnott and other open source community developers 
 
 
 
