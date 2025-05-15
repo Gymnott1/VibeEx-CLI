@@ -45,6 +45,84 @@ Lets make AI coding easy and secure !!!!! 💥💥⭐🥳
 ```bash
 npm install -g vibex-cli
 ```
+# Installing `vibex-cli` on Linux
+
+This guide walks you through installing the `vibex-cli` package globally on a Linux system using npm, while avoiding permission issues that often arise when installing global packages.
+
+---
+
+## Step 1: Configure npm to Use a User-Specific Directory
+
+By default, npm installs global packages in a system directory (e.g., `/usr/lib/node_modules`), which requires root access and can lead to permission errors. To avoid this, configure npm to install global packages in a directory within your home folder, such as `~/.npm-global`.
+
+Run this command to set the new prefix:
+
+```bash
+npm config set prefix '~/.npm-global'
+```
+
+This is a one-time setup. After running this, all future global npm installations will use `~/.npm-global` instead of the system directory.
+
+---
+
+## Step 2: Update Your PATH
+
+To run globally installed packages (like `vibex-cli`) from anywhere in the terminal, you need to add the new global `bin` directory (`~/.npm-global/bin`) to your system's PATH. The PATH is an environment variable that tells your shell where to look for executable files.
+
+Depending on your shell, add the appropriate line to your shell configuration file:
+
+- **For Bash** (typically `~/.bashrc`):
+
+  ```bash
+  echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc && source ~/.bashrc
+  ```
+
+- **For Zsh** (typically `~/.zshrc`):
+
+  ```bash
+  echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc && source ~/.zshrc
+  ```
+
+- **For other shells** (e.g., `~/.profile`):
+
+  Append this line to the relevant configuration file:
+
+  ```bash
+  export PATH=~/.npm-global/bin:$PATH
+  ```
+
+  Then, reload the configuration file:
+
+  ```bash
+  source ~/.profile
+  ```
+
+This step ensures that your shell can find the `vibex-cli` executable after installation.
+
+---
+
+## Step 3: Install `vibex-cli` Globally
+
+With npm configured and your PATH updated, you can now install `vibex-cli` without needing `sudo` or encountering permission errors. Run the following command:
+
+```bash
+npm install -g vibex-cli
+```
+
+This installs `vibex-cli` in `~/.npm-global/lib/node_modules`, and its executable will be placed in `~/.npm-global/bin`, which is now accessible via your PATH.
+
+---
+
+## Verify the Installation
+
+To confirm that `vibex-cli` is installed and working, run:
+
+```bash
+vibex-cli --version
+```
+
+If this command outputs a version number, the installation was successful!
+
 
 ## 🔧 Usage
 
