@@ -1,6 +1,6 @@
 {
   "name": "vibex-cli",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "VibEx CLI for preparing code for AI analysis",
   "type": "module",
   "main": "src/index.js",
