@@ -412,6 +412,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Developed by Linus Wabwire alias gymnott and other open source community developers 
 
 
+[![Buy me a coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/gymnott)
 
 
 *Tags: code security, AI coding assistant, sensitive data protection, secure coding, developer tools, data privacy, API key protection, code sanitization, AI prompt engineering, context window optimization, credential protection, secure development, code sharing tools, PII protection, developer security, AI code assistance, secure AI integration, code privacy, token optimization, CLI tools, developer productivity*
